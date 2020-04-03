@@ -13,3 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ .logoContrainer{
+     margin: 0 auto;
+     text-align: center;
+     background: #c0bcd5;
+ }
