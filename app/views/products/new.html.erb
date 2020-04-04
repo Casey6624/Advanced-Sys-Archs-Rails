@@ -1,0 +1,44 @@
+<h1>Add a New Product to the system</h1>
+<p>Fill out the form below:</p>
+
+<%= form_for :product, url: products_path do |p| %>
+
+<div class="form-group">
+    <%= p.label :productName %>
+    <%= p.text_field :productName %>
+</div>
+
+<div class="form-group">
+    <%= p.label :brandName %>
+    <%= p.text_field :brandName %>
+</div>
+
+<div class="form-group">
+    <%= p.label :averageCost %>
+    <%= p.number_field(:averageCost, step: 0.5) %>
+</div>
+
+<div class="form-group">
+    <%= p.label :category %>
+    <%= p.text_field :category %>
+</div>
+
+<div class="form-group">
+    <%= p.label :dateReleased %>
+    <%= p.text_field :dateReleased %>
+</div>
+
+<div class="form-group">
+    <%= p.label :description %>
+    <%= p.text_field :description %>
+</div>
+
+<div class="form-group">
+    <%= p.label :productImage %>
+    <%= p.file_field :productImage %>
+</div>
+
+<div class="form-group">
+    <%= p.submit %>
+</div>
+<% end %>

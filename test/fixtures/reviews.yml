@@ -1,14 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  reviewID: 1
   authorName: MyString
   productRating: 1
   reviewText: MyText
   dateOfReview: MyString
 
 two:
-  reviewID: 1
   authorName: MyString
   productRating: 1
   reviewText: MyText

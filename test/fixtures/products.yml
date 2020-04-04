@@ -1,19 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  productID: 1
   productName: MyString
+  brandName: MyString
   averageCost: 9.99
   category: MyString
   dateReleased: MyString
   description: MyText
-  productImage: MyString
+  productImage: 
 
 two:
-  productID: 1
   productName: MyString
+  brandName: MyString
   averageCost: 9.99
   category: MyString
   dateReleased: MyString
   description: MyText
-  productImage: MyString
+  productImage: 

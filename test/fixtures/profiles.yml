@@ -1,21 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  profileID: 1
-  userID: 1
   fullName: MyString
   DoB: MyString
-  address: MyString
+  address: MyText
   city: MyString
   country: MyString
-  profileImage: MyString
+  profileImage: 
 
 two:
-  profileID: 1
-  userID: 1
   fullName: MyString
   DoB: MyString
-  address: MyString
+  address: MyText
   city: MyString
   country: MyString
-  profileImage: MyString
+  profileImage: 

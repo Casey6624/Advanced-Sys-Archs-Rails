@@ -10,35 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_204420) do
+ActiveRecord::Schema.define(version: 2020_04_04_142236) do
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "productID"
     t.string "productName"
+    t.string "brandName"
     t.decimal "averageCost", precision: 10
     t.string "category"
     t.string "dateReleased"
     t.text "description"
-    t.string "productImage"
+    t.binary "productImage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "profileID"
-    t.integer "userID"
     t.string "fullName"
     t.string "DoB"
-    t.string "address"
+    t.text "address"
     t.string "city"
     t.string "country"
-    t.string "profileImage"
+    t.binary "profileImage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "reviewID"
     t.string "authorName"
     t.integer "productRating"
     t.text "reviewText"
@@ -48,10 +45,9 @@ ActiveRecord::Schema.define(version: 2020_04_03_204420) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.integer "userID"
     t.string "username"
     t.string "password"
-    t.binary "userType"
+    t.string "userType"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
