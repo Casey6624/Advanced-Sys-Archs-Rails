@@ -24,9 +24,9 @@
     </div>
         <%= image_tag(product.productImg, class:"product-image") %>
     </div>
-<div class="product-controls side-by-side-flex"> 
-    <h4 class="prod-control"> View Product </h4>
-    <h4 class="prod-control"> Write A Review </h4>
+<div class="product-controls"> 
+    <%= link_to "View Product", product_path(product), {:class => "prod-control"} %>
+        <%= link_to "Write a Review", "#", {:class => "prod-control"} %>
 </div>
 </div>
 <% end %>

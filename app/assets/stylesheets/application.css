@@ -30,6 +30,22 @@ html, p, h3{
      background: #c0bcd5;
  }
 
+ .nav-link{
+     text-transform: uppercase;
+     font-weight: bold;
+     font-family: 'Montserrat', sans-serif;
+ }
+
+ .nav-link a{
+    text-decoration: none;
+    color: #f2f2f2;
+    font-size: 1.5rem;
+ }
+
+ .nav-link a:hover{
+    color: #733c87;
+ }
+
  /* GENERIC AND POSITIONAL*/
  .side-by-side-flex{
      display: flex;
@@ -43,12 +59,18 @@ html, p, h3{
     align-items: center;
  }
 
+ .flex-start{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+ }
+
  .center-no-marg{
      margin: 0 auto;
      padding: 0;
      text-align: center;
  }
-/* PRODUCT CSS */
+/* PRODUCTS CSS */
  #prod-cat{
      color: #733c87;
      background: #c0bcd5;
@@ -65,10 +87,6 @@ html, p, h3{
     background: #733c87;
     color: #c0bcd5;
     cursor: pointer;
-}
-
-.prod-name{
-    
 }
 
 .fancy-divider{
@@ -94,7 +112,7 @@ html, p, h3{
     color: #c0bcd5;
     margin-left: 2rem;
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     padding: 0.5rem;
     z-index: 2;
     font-family: 'Anton', sans-serif;
@@ -105,10 +123,17 @@ html, p, h3{
     color: #733c87;
     background: #c0bcd5;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .product-controls{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+/* SINGLE PRODUCT CSS */
+
+.product-full-container{
+    margin: 2rem;
 }
