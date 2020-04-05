@@ -13,9 +13,54 @@
  *= require_tree .
  *= require_self
  */
+ @import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@100&display=swap');
+
+
+ 
+html, p, h3{
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-weight: bold;
+}
 
  .logoContrainer{
      margin: 0 auto;
      text-align: center;
      background: #c0bcd5;
  }
+
+ .side-by-side-flex{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+ }
+
+ .space-around-flex{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+ }
+
+ .center-no-marg{
+     margin: 0 auto;
+     padding: 0;
+     text-align: center;
+ }
+
+ #prod-cat{
+     color: #733c87;
+     background: #c0bcd5;
+     margin-left: 2rem;
+     position: relative;
+     font-size: 2rem;
+     padding: 0.5rem;
+     z-index: 2;
+     font-family: 'Anton', sans-serif;
+     transform: skew(-7deg);
+ }
+
+ #prod-cat:hover{
+    background: #733c87;
+    color: #c0bcd5;
+    cursor: pointer;
+}

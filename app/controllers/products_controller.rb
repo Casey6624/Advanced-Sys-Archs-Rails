@@ -5,12 +5,17 @@ class ProductsController < ApplicationController
   def new
   end
   def show
-    @product.Product.find(params[:id])
+    logger.info "Product is #{@product}"
+    @product = Product.find(params[:id])
   end
   def create
     @product=Product.new(product_params)
     @product.save
     redirect_to @product
+  end
+  def show_image
+    @product = Product.find(params[:id])
+    send_data @product.productImage, :type => 'image/jpg'
   end
   private
   def product_params

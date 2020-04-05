@@ -1,0 +1,23 @@
+<div class="center-no-marg">
+    <p>All Reviewable Products</p>
+    <p> <span class="badge badge-secondary"><%= @products.length %></span> Found </p>
+</div>
+
+<div class="products-container">
+
+<% @products.each do |product| %>
+
+<div class="product-container">
+    <div class="side-by-side-flex">
+        <strong> <h2> <%= product.productName %> </h2> </strong> 
+        <h3 id="prod-cat"> <%= product.category %> </h3>
+    </div>
+    <p> <%= product.brandName %> </p>
+    <p> £ <%= product.averageCost %> </p>
+    <p> <%= product.dateReleased %> </p>
+    <p> <%= product.description %> </p>
+    <p> <%= product.productImage %> </p>
+</div>
+
+<% end %>
+</div>
