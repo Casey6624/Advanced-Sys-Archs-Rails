@@ -77,6 +77,38 @@ html, p, h3{
     margin: 0 1rem 0 1rem;
 }
 
-.products-container{
+.product-container{
     padding: 1rem;
+    margin: 1rem;
+    box-shadow: 10px 10px 5px grey;
+}
+
+.product-image{
+    width:100%;
+    height: 250px;
+    object-fit: scale-down;
+}
+
+.prod-control{
+    background: #733c87;
+    color: #c0bcd5;
+    margin-left: 2rem;
+    position: relative;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    z-index: 2;
+    font-family: 'Anton', sans-serif;
+    transform: skew(-7deg);
+}
+
+.prod-control:hover{
+    color: #733c87;
+    background: #c0bcd5;
+    cursor: pointer;
+}
+
+.product-controls{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }

@@ -3,11 +3,11 @@
     <p> <span class="badge badge-secondary"><%= @products.length %></span> Found </p>
 </div>
 
-<div class="card products-container">
+<div class="products-container">
 
 <% @products.each do |product| %>
 
-<div class="product-container">
+<div class="card product-container">
     <div class="side-by-side-flex">
         <div class="space-around-flex">
         <strong> <h2 class="prod-name"> <%= product.productName %> </h2> </strong>
@@ -17,10 +17,17 @@
         <h3 id="prod-cat"> <%= product.category %> </h3>
     </div>
     <p> <%= product.description %> </p>
-    <p> £ <%= product.averageCost %> </p>
-    <p> <%= product.dateReleased %> </p>
-    <%= image_tag product.productImg %>
+    <div class="side-by-side-flex">
+        <div class="price-date-container">
+        <h4> Average Price: £ <%= product.averageCost %> </h4>
+        <p> Product Release Date: <%= product.dateReleased %> </p>
+    </div>
+        <%= image_tag(product.productImg, class:"product-image") %>
+    </div>
+<div class="product-controls side-by-side-flex"> 
+    <h4 class="prod-control"> View Product </h4>
+    <h4 class="prod-control"> Write A Review </h4>
 </div>
-
+</div>
 <% end %>
 </div>
