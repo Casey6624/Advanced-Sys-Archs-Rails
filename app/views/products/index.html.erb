@@ -19,8 +19,7 @@
     <p> <%= product.description %> </p>
     <p> £ <%= product.averageCost %> </p>
     <p> <%= product.dateReleased %> </p>
-    <%= image_tag url_for(:controller => "products", :action => "show_image", :id => product.id) %>
-    <img src="data:image/jpeg;base64, <%=product.productImage %>"/>
+    <%= image_tag product.productImg %>
 </div>
 
 <% end %>
