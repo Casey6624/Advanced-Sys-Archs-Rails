@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_05_174531) do
+ActiveRecord::Schema.define(version: 2020_04_06_082352) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin", force: :cascade do |t|
     t.string "name", null: false
@@ -38,11 +38,11 @@ ActiveRecord::Schema.define(version: 2020_04_05_174531) do
     t.string "brandName"
     t.decimal "averageCost", precision: 10
     t.string "category"
-    t.string "dateReleased"
     t.text "description"
     t.binary "productImage"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "dateReleased"
   end
 
   create_table "profiles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
