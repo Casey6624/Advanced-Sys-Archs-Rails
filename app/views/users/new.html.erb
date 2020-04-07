@@ -3,6 +3,7 @@
 
 <%= f.text_field :username, placeholder: 'Enter a Username', class: 'form-control' %>
 <%= f.password_field :password, placeholder: 'Create a Password' %>
+<%= f.hidden_field :userType, :value => "User" %>
 <br>
 <%= f.submit 'Create Account', class:"btn btn-primary" %>
 <% end %>
