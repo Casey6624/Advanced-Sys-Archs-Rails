@@ -1,2 +1,41 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="container">
+<h2>Create User Account</h2>
+<%= form_for :user do|f| %>
+
+<div class="field" style="100%">
+<% if false %>
+<% if @user.errors.any? %>
+<div id="error_explanation">
+<h2>
+<%= pluralize(@user.errors.count, "error") %>
+prohibted this from being saved:
+</h2>
+
+<p>
+<ul>
+<% @user.errors.full_messages.each do |msg| %>
+<li>
+<%= msg %>
+</li>
+</ul>
+<% end %>
+</p>
+
+<% if alert %>
+<%= alert %>
+<% end %>
+</div>
+<% end %>
+
+<% end %>
+
+<%= f.text_field :username, placeholder: 'Enter a Username', class:
+'form-control' %>
+<%= f.password_field :password, placeholder: 'Create a Password',
+class: 'form-control' %>
+<%= f.password_field :password_confirmation, placeholder: 'Confirm
+your Password', class: 'form-control' %>
+<%= f.submit 'Create Account' %>
+<% end %>
+</div>
+</div>

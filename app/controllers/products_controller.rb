@@ -13,6 +13,7 @@ class ProductsController < ApplicationController
     @product.save
     redirect_to @product
   end
+  # I think this can be deleted, once removed from routes
   def show_image
     @product = Product.find(params[:id])
     logger.info "file is #{@product.productImage}"

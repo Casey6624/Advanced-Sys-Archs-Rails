@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/index'
   get 'users/create'
-  get 'users/new'
-  #get 'users/new'
-  #get 'users/create'
   root "static_pages#home"
   #match "/products" to "static_pages/products"
   get 'products/create'
