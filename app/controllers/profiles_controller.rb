@@ -10,11 +10,19 @@ class ProfilesController < ApplicationController
   end
 
   def create
+    # add if / else statements
+    @profile = Profile.new(profile_params.merge(user_id: current_user.id))
+    @profile.save
+    redirect_to @profile
   end
 
   def edit
   end
 
   def show
+  end
+  private
+  def profile_params
+    params.require(:profile).permit(:fullName, :DoB, :address, :city, :country)
   end
 end
