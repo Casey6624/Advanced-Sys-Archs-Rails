@@ -19,14 +19,15 @@
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
       <%= link_to "Create Account", "/users/new", class:"dropdown-item" %>
-      <%= link_to "Log In", "/sessions/new", class:"dropdown-item" %>
+        <%= link_to "Log Out", "/sessions/destroy", class:"dropdown-item" %>
+        <%= link_to "Log In", "/sessions/new", class:"dropdown-item" %>
       <%= link_to "View My Reviews", "/users/new", class:"dropdown-item" %>
       <%= link_to "View My Profile", "/users/new", class:"dropdown-item" %>
       <%= link_to "Edit My Profile", "/users/new", class:"dropdown-item" %>
     </div>
   </li>
   <li class="nav-item nav-link">
-    <a id="nav-username"> <%= current_user %> </a>
+    <a id="nav-username"> <%= session[:username] %> </a>
   </li>
   </nav>
 
