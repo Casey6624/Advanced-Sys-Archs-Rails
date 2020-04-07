@@ -55,6 +55,10 @@ html, p, h3{
     text-decoration: none;
  }
 
+ #nav-username{
+     color: white;
+ }
+
  /* GENERIC AND POSITIONAL*/
  .side-by-side-flex{
      display: flex;
@@ -78,6 +82,11 @@ html, p, h3{
      margin: 0 auto;
      padding: 0;
      text-align: center;
+ }
+
+ .fancy-text-highlight{
+     color: #733c87;
+     font-weight: bold;
  }
 
  .main-page-body{
