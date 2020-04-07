@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+  get 'sessions/destroy'
   root "static_pages#home"
   #match "/products" to "static_pages/products"
   get 'products/create'
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
   get 'static_pages/contactus'
   get 'static_pages/products'
 
+  resources :sessions
   resources :users
   resources :products
   
