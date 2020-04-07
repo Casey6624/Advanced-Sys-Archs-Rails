@@ -1,9 +1,14 @@
-<h2>Create User Account</h2>
-<%= form_for User.new do |f| %>
+<div class="main-page-body">
+    <h2>Sign Up to Electroniks.</h2>
+    <p> Start reviewing products yourself.</p>
 
-<%= f.text_field :username, placeholder: 'Enter a Username', class: 'form-control' %>
-<%= f.password_field :password, placeholder: 'Create a Password' %>
-<%= f.hidden_field :userType, :value => "User" %>
-<br>
-<%= f.submit 'Create Account', class:"btn btn-primary" %>
-<% end %>
+    <%= form_for User.new do |f| %>
+    <%= f.text_field :username, placeholder: 'Enter a Username', class: 'form-control' %>
+    <br>
+    <%= f.password_field :password, placeholder: 'Enter a Password', class: 'form-control' %>
+    <%= f.hidden_field :userType, :value => "User" %>
+    <br>
+    <%= f.submit 'Create Account', class:"btn btn-primary" %>
+    <%= link_to  "Cancel", products_path, class: "btn btn-danger" %>
+    <% end %>
+</div>

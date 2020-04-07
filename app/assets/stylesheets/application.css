@@ -79,6 +79,11 @@ html, p, h3{
      padding: 0;
      text-align: center;
  }
+
+ .main-page-body{
+     margin: 1rem;
+     max-width: 1080px;
+ }
 /* PRODUCTS CSS */
  #prod-cat{
      color: #733c87;
@@ -145,4 +150,10 @@ html, p, h3{
 
 .product-full-container{
     margin: 2rem;
+}
+
+/* LOGIN/SignUp */
+
+#user_username, #user_password{
+    width: 60%;
 }
