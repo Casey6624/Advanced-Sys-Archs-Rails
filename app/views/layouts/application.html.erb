@@ -11,6 +11,19 @@
   </head>
 
   <body>
+
+  <nav class="navbar navbar-dark bg-dark">
+      <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Account
+    </a>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      <%= link_to "Create Account", "/users/new", class:"dropdown-item" %>
+      <%= link_to "Log In", "/users/new", class:"dropdown-item" %>
+    </div>
+  </li>
+  </nav>
+
   <div class="logoContrainer">
     <%= image_tag "logo.jpg" %>
   </div>
@@ -27,6 +40,7 @@
   <li class="nav-item nav-link">
     <%= link_to "Contact Us", "/static_pages/contactus" %>
   </li>
+
 </nav>
   <div class="container">
     <%= yield %>
