@@ -8,18 +8,16 @@ class ProfilesController < ApplicationController
       redirect_to :action => "show"
     end
   end
-
   def create
     # add if / else statements
     @profile = Profile.new(profile_params.merge(user_id: current_user.id))
     @profile.save
     redirect_to @profile
   end
-
   def edit
   end
-
   def show
+    @profile = Profile.find(params[:id])
   end
   private
   def profile_params

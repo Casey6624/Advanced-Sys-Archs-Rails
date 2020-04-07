@@ -13,12 +13,6 @@ class ProductsController < ApplicationController
     @product.save
     redirect_to @product
   end
-  # I think this can be deleted, once removed from routes
-  def show_image
-    @product = Product.find(params[:id])
-    logger.info "file is #{@product.productImage}"
-    send_data @product.productImage.tempfile, :disposition => "inline"
-  end
   private
   def product_params
     params.require(:product).permit(:productName, :brandName, :averageCost, :category, :dateReleased, :description, :productImg)

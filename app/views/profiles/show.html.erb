@@ -1,2 +1,10 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<div class="product-full-container">
+    <div class="flex-start">
+        <h2 class="prod-name"> <%= @profile.fullName %> </h2>
+        <span class="fancy-divider">from</span>
+        <h3> <%= @profile.city %>, <%= @profile.city %></h3>
+    </div>
+    <p> Date of Birth: <%= @profile.DoB %> </p>
+    <p> Address: <%= @profile.address %> </p>
+    <p> A Loyal Member Since: <span class="badge badge-info"> <%= @profile.created_at.strftime("%F") %>  </span> </p>
+</div>
