@@ -16,6 +16,7 @@ class ReviewsController < ApplicationController
       nestedParams = params[:review]
       productId = nestedParams[:product_id]
       @review = Review.new(review_params.merge(profile_id: profile.id, product_id: productId))
+      @review.authorName = profile.fullName
       @review.save
       redirect_to @review
     else
