@@ -17,7 +17,12 @@ class ProfilesController < ApplicationController
   def edit
   end
   def show
-    @profile = Profile.find(params[:id])
+    if current_user == nil
+      # change to login route
+      redirect_to products_url
+    else
+      @profile = Profile.find_by(user_id: current_user.id)
+    end
   end
   private
   def profile_params
