@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/show'
   get 'sessions/create'
   get 'sessions/destroy'
   root "static_pages#home"
@@ -16,6 +13,7 @@ Rails.application.routes.draw do
   resources :users
   resources :products
   resources :profiles
+  resources :reviews
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

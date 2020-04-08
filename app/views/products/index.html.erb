@@ -26,7 +26,7 @@
     </div>
 <div class="product-controls"> 
     <%= link_to "View Product", product_path(product), {:class => "prod-control"} %>
-        <%= link_to "Write a Review", reviews_new_path(:product_id => product.id), {:class => "prod-control"} %>
+        <%= link_to "Write a Review", new_review_url(:product_id => product.id, :product_name => product.productName), {:class => "prod-control"} %>
 </div>
 </div>
 <% end %>
