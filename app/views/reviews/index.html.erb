@@ -1,4 +1,14 @@
+<div class="main-page-body">
+
 <div class="products-container">
+
+<div>
+    <h2> All Reviews for <span class="fancy-highlight"> <%= params[:product_name] %> </span></h2>
+</div>
+
+ <%= link_to "Write a Review", new_review_url(:product_id => params[:product_id], :product_name => params[:product_name]), {:class => "btn btn-primary"} %>
+ <%= link_to "Back to Products", products_path, {:class => "btn btn-danger"} %>
+
 
 <% @reviews.each do |r| %>
 
@@ -19,4 +29,5 @@
 </div>
 <% end %>
 
+</div>
 </div>

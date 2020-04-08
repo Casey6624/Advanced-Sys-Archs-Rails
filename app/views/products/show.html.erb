@@ -1,4 +1,7 @@
 <div class="product-full-container">
+
+ <%= link_to "Write a Review", new_review_url(:product_id => @product.id, :product_name => @product.productName), {:class => "btn btn-primary"} %>
+ <%= link_to "Back to Products", products_path, {:class => "btn btn-danger"} %>
     <div class="flex-start">
         <h2 class="prod-name"> <%= @product.productName %> </h2>
         <span class="fancy-divider">from</span>

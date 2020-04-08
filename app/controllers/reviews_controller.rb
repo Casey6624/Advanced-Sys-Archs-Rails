@@ -1,8 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :authorize, :only => [:create, :new]
   def index
-    #@reviews = Review.all
-    @reviews=Review.select("*").where("product_id = #{params[:product_id]}")
+    if params.has_key?(:product_id)
+      @reviews=Review.select("*").where("product_id = #{params[:product_id]}")
+    else
+      redirect_to products_path
+    end
   end
   def new
     if current_user.nil?
