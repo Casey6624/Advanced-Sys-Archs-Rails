@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/destroy'
+  #match "products/:product_id", "products#product_reviews", via :get
   root "static_pages#home"
   #match "/products" to "static_pages/products"
   get 'products/create'

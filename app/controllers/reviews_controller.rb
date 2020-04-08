@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :authorize, :only => [:create, :new]
+  def index
+    #@reviews = Review.all
+    @reviews=Review.select("*").where("product_id = #{params[:product_id]}")
+  end
   def new
     if current_user.nil?
       # change to login 

@@ -1,0 +1,22 @@
+<div class="products-container">
+
+<% @reviews.each do |r| %>
+
+<div class="card product-container">
+    <div class="side-by-side-flex">
+        <div class="space-around-flex">
+        <strong> <h2 class="prod-name"> <%= r.authorName %> </h2> </strong>
+        <span class="fancy-divider"> by </span>
+        <h3> <%= r.productRating %> </h3>
+        </div>
+    </div>
+    <p> <%= r.reviewText %> </p>
+    <div class="side-by-side-flex">
+        <div class="price-date-container">
+        <p> r Release Date: <%= r.created_at %> </p>
+</div>
+</div>
+</div>
+<% end %>
+
+</div>
