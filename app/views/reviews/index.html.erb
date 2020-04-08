@@ -16,8 +16,15 @@
     <div class="side-by-side-flex">
         <div class="space-around-flex">
         <strong> <h2 class="prod-name"> <%= r.authorName %> </h2> </strong>
-        <span class="fancy-divider"> by </span>
-        <h3> <%= r.productRating %> </h3>
+        <span class="fancy-divider"> rated </span>
+        <div class="side-by-side-flex">
+            <%  (5 - r.productRating).times do |i|  %>
+                <%= image_tag "loststar.png", id:"star-icon" %>
+            <% end %>
+            <% r.productRating.times do |i|  %>
+                <%= image_tag "favourite.png", id:"star-icon" %>
+            <% end %>
+        </div>
         </div>
     </div>
     <p> <%= r.reviewText %> </p>

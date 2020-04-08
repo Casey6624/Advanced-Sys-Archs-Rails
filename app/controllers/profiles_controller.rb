@@ -17,11 +17,14 @@ class ProfilesController < ApplicationController
   def edit
   end
   def show
-    if current_user == nil
-      # change to login route
-      redirect_to products_url
+    if params.has_key?(:id)
+      if Profile.exists?(user_id: params[:id])
+        @profile = Profile.find_by(user_id: params[:id])
+      else
+        redirect_to root_path
+      end
     else
-      @profile = Profile.find_by(user_id: current_user.id)
+      Profile.exists?(user_id: current_user.id)
     end
   end
   private
