@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'reviews/new'
+  get 'reviews/create'
+  get 'reviews/show'
   get 'sessions/create'
   get 'sessions/destroy'
   root "static_pages#home"
