@@ -30,6 +30,26 @@ html, p, h3{
      background: #c0bcd5;
  }
 
+ #main-nav{
+     background: #c0bcd5 !important;
+     margin-bottom: 1rem;
+ }
+
+ #main-nav > li > a {
+     color: #733c87;
+ }
+
+ #main-nav{
+     display: flex;
+     justify-content: flex-start;
+ }
+
+ #main-nav > li > a:hover {
+    color: white;
+    cursor: pointer;
+}
+
+
  .nav-link{
      text-transform: uppercase;
      font-weight: bold;
@@ -102,20 +122,46 @@ html, p, h3{
  }
 
  .main-page-body{
-     margin: 1rem;
+     margin: 0 auto;
      max-width: 1080px;
  }
+
+ /* INDEX CS */
+
+ .homepage-banner-container img{
+    max-width: 100vw;
+    margin-top: -18rem;
+    z-index: -10;
+    position: absolute;
+ }
+
+ #row-1-blurb p, #row-1-blurb h1, #row-1-blurb a{
+    margin: 2rem;
+ }
+
+ #row-1-blurb h1{
+     font-family: 'Montserrat', sans-serif;
+     color: black;
+ }
+
+ #main-row-2{
+     margin-top: 2rem;
+ }
+
+
+
 /* PRODUCTS CSS */
  #prod-cat{
      color: #733c87;
-     background: #c0bcd5;
-     margin-left: 2rem;
-     position: relative;
-     font-size: 2rem;
-     padding: 0.5rem;
-     z-index: 2;
-     font-family: 'Anton', sans-serif;
-     transform: skew(-7deg);
+     background: #c0bcd5 !important;
+     margin-left: 2rem !important;
+     position: relative !important;
+     font-size: 2rem !important;
+     padding: 0.5rem !important;
+     z-index: 2 !important;
+     font-family: 'Anton', sans-serif !important;
+     transform: skew(-7deg) !important;
+     width: fit-content !important;
  }
 
  #prod-cat:hover{

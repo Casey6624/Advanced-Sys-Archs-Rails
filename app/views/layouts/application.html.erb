@@ -12,7 +12,7 @@
 
   <body>
 
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark" >
       <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       Account
@@ -34,7 +34,7 @@
   <div class="logoContrainer">
     <%= image_tag "logo.jpg" %>
   </div>
-  <nav class="navbar navbar-dark bg-dark">
+  <nav class="navbar navbar-dark bg-dark" id="main-nav">
   <li class="nav-item nav-link">
     <%= link_to "Home", "/" %>
   </li>
@@ -49,8 +49,8 @@
   </li>
 
 </nav>
-  <div class="container">
+
     <%= yield %>
-  </div>
+
   </body>
 </html>
