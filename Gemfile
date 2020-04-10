@@ -23,7 +23,15 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# begin custom gems
+
 gem "friendly_id", "~> 5.2.4"
+
+gem "sprockets-rails", :require => "sprockets/railtie"
+
+gem "bootstrap-sass", "~> 3.4.1"
+
+# end custom gems
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

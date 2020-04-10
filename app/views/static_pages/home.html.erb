@@ -4,61 +4,69 @@
 
 <div class="row" id="row-1-home">
 
-    <div class="col-sm-6">
+    <div class="col-sm-8">
 
     </div>
 
-    <div class="col-sm-6" id="row-1-blurb">
+    <div class="col-sm-4" id="row-1-blurb">
         <div class="card" >
         <h1 class="display-4">The home of reviewing tech.</h1>
         <p class="lead">Sign up today to start reviewing our extensive library of products. </p>
         <hr class="my-4">
 
-        <%= link_to "Sign Up", sessions_path, {:class => "prod-control"} %>
-
+        <div class="flex-start">
+            <%= link_to "Sign Up", "/users/create", {:class => "prod-control"} %>
+            <%= link_to "Log In", "sessions/new", {:class => "prod-control"} %>
+        </div>
         </div>
     </div>
 
 </div>
 
-<div class="container-fluid text-center" id="main-row-2">
-  <h2>SERVICES</h2>
-  <h4>What we offer</h4>
+<div class="container-fluid text-center card" id="main-row-2">
+
+  <div class="main-page-body">
+
+  <h2>Why <span class="fancy-text-highlight"> Electroniks? </span> </h2>
+  <h4>What stands us out from the rest.</h4>
   <br>
   <div class="row">
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-off"></span>
-      <h4>POWER</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <i class="fas fa-users"></i>
+      <h4>COMMUNITY</h4>
+      <p>Our users love to talk to other tech lovers.</p>
     </div>
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-heart"></span>
-      <h4>LOVE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <i class="fas fa-users-cog"></i>
+      <h4>TECH HELP</h4>
+      <p>Find solutions and fixes from our technical community</p>
     </div>
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-lock"></span>
-      <h4>JOB DONE</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <i class="fab fa-black-tie"></i>
+      <h4>GET JOBS</h4>
+      <p>Turn your passion of reviewing into a job! We're always hiring professionals.</p>
     </div>
     </div>
     <br><br>
   <div class="row">
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-leaf"></span>
-      <h4>GREEN</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <i class="fas fa-book-reader"></i>
+      <h4>CREATE A FOLLOWING</h4>
+      <p>Gain subscribers and a loyal following of your reviews.</p>
     </div>
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-certificate"></span>
-      <h4>CERTIFIED</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <i class="far fa-calendar"></i>
+      <h4>JOIN EXCLUSIVE EVENTS</h4>
+      <p>Be shortlisted for all our special events.</p>
     </div>
     <div class="col-sm-4">
-      <span class="glyphicon glyphicon-wrench"></span>
-      <h4>HARD WORK</h4>
-      <p>Lorem ipsum dolor sit amet..</p>
+      <i class="fas fa-camera-retro"></i>
+      <h4>EVERY KIND OF TECH</h4>
+      <p>We have everything from fidges to smart phones.</p>
     </div>
   </div>
+
+  </div>
+
 </div>
 
