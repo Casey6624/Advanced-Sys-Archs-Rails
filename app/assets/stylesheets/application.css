@@ -80,6 +80,25 @@ html, p, h3{
      font-size: 1rem;
  }
 
+ #bottom-nav-links li > a{
+     font-size: 1rem;
+ }
+
+ .bottom-nav-title{
+     color: #c0bcd5;
+     text-decoration: none;
+ }
+
+ .bottom-nav-title-container{
+    text-decoration: none; 
+    list-style: none;
+ }
+
+ #bottom-nav-tagline{
+     color: white;
+     text-decoration-style: wavy;
+ }
+
  /* GENERIC AND POSITIONAL*/
  .side-by-side-flex{
      display: flex;
@@ -130,7 +149,7 @@ html, p, h3{
 
  .homepage-banner-container img{
     max-width: 100vw;
-    margin-top: -0;
+    margin-top: -45rem;
     z-index: -10;
     position: absolute;
  }
