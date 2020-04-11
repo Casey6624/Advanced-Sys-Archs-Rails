@@ -52,7 +52,7 @@
 
   <%= yield %>
   <nav class="navbar navbar-dark bg-dark" id="bottom-nav">
-    <div class="col-sm-5" id="bottom-nav-links">
+    <div class="col-sm-6" id="bottom-nav-links">
       <li class="bottom-nav-title-container">
         <h4 class="bottom-nav-title"> MENU LINKS </h4>
       </li>
@@ -72,32 +72,40 @@
     </ul>
     </div>
 
-    <div class="col-sm-5" id="bottom-nav-links">
+    <div class="col-sm-6" id="bottom-nav-links">
       <li class="bottom-nav-title-container">
         <h4 class="bottom-nav-title"> ACCOUNT OPTIONS </h4>
       </li>
+      <div class="side-by-side-flex">
+              <li class="nav-item nav-link">
+      <%= link_to "Create Account", "/users/new" %>
+      </li>
+        <li class="nav-item nav-link">
+        <%= link_to "Log Out", "/sessions/destroy" %>
+        </li>
+        <li class="nav-item nav-link">
+        <%= link_to "Log In", "/sessions/new" %>
+        </li>
+      </div>
+      <div class="side-by-side-flex">
       <li class="nav-item nav-link">
-        <%= link_to "Home", "/" %>
+      <%= link_to "View My Reviews", "/users/new" %>
       </li>
       <li class="nav-item nav-link">
-        <%= link_to "Products", "/products" %>
+      <%= link_to "View My Profile", "/profiles/show" %>
       </li>
       <li class="nav-item nav-link">
-        <%= link_to "About Us", "/static_pages/aboutus" %>
+      <%= link_to "Edit My Profile", "/profiles/edit" %>
       </li>
-      <li class="nav-item nav-link">
-        <%= link_to "Contact Us", "/static_pages/contactus" %>
-      </li>
+      </div>
     
     </div>
-        <div class="col-sm-2">
-          
-      <p id="bottom-nav-tagline"> Rate The Latest Tech. <p>
-    
+    <div class="row">
+    <div class="col-sm-12">
+    <hr />
+      <p id="copy-right-credits"> © Electroniks 2020</p>
+    </div>
     </div>
   </nav>
-  
-  
-  
   </body>
 </html>

@@ -99,6 +99,12 @@ html, p, h3{
      text-decoration-style: wavy;
  }
 
+ #copy-right-credits{
+     text-align: center;
+     color: white;
+     margin: 0 auto;
+ }
+
  /* GENERIC AND POSITIONAL*/
  .side-by-side-flex{
      display: flex;
