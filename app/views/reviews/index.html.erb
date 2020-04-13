@@ -30,7 +30,7 @@
     <p> <%= r.reviewText %> </p>
     <div class="side-by-side-flex">
         <div class="price-date-container">
-        <p> r Release Date: <%= r.created_at %> </p>
+        <p> Review Submitted: <%= r.created_at.strftime("%F") %> </p>
 </div>
 </div>
 </div>

@@ -17,7 +17,11 @@ class ProductsController < ApplicationController
       redirect_to(products_path, notice: "No search text inputted.") and return
     else
       @parameter = params[:term].downcase
-      @products = Product.all.where("lower(productName) LIKE :term", term: @parameter)
+      @products = Product.all.where("lower(productName) LIKE :term", term: "%#{@parameter}%")
+      if(@products.nil?)
+        @products = Product.all
+        flash.alert = "Could not find that product, showing all products."
+      end
     end
   end
 

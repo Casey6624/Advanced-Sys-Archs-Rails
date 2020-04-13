@@ -1,0 +1,29 @@
+<div class="main-page-body">
+
+<div class="products-container">
+<h2> All <span class="fancy-text-highlight"> Electroniks </span> Users</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Full Name</th>
+      <th scope="col">City</th>
+      <th scope="col">Country</th>
+      <th scope="col">Member Since</th>
+      <th scope="col">-</th>
+    </tr>
+  </thead>
+  <tbody>
+        <% @profiles.each do |p| %>
+            <tr>
+            <td><%= p.fullName %></td>
+            <td><%= p.city %></td>
+            <td><%= p.country %></td>
+            <td><%= p.created_at.strftime("%F") %></td>
+            <td> <%= link_to "View Profile", "#{profiles_path}/#{p.user_id}", {:class => "prod-control"} %> </td>
+            </tr>         
+        <% end %>
+  </tbody>
+</table>
+
+</div>
+</div>

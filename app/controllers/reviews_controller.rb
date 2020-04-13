@@ -10,16 +10,16 @@ class ReviewsController < ApplicationController
   def new
     if current_user.nil?
       # change to login 
-      redirect_to sessions_url
+      redirect_to sessions_path
     end
     if !Profile.exists?(user_id: current_user.id)
-      redirect_to sessions_url
+      redirect_to profiles_path
     end
   end
   def create
     if Profile.exists?(user_id: current_user.id)
       profile = Profile.find_by_user_id(current_user.id)
-      # Pick out the product_id which is a hidden_field
+      # Pick out the product_id which is a hidden_field in the review form
       nestedParams = params[:review]
       productId = nestedParams[:product_id]
       @review = Review.new(review_params.merge(profile_id: profile.id, product_id: productId))

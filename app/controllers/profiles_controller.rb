@@ -1,11 +1,21 @@
 class ProfilesController < ApplicationController
   #before_action :authorize, :only => [:create, :show, :edit, :new]
+  def index
+    @profiles = Profile.all
+  end
+  def show
+    if params.has_key?(:id)
+      if Profile.exists?(user_id: params[:id])
+        @profile = Profile.find_by(user_id: params[:id])
+      end
+    end
+  end
   def new
     if current_user == nil
-      redirect_to products_url
+      redirect_to sessions_path
     end
     if Profile.exists?(user_id: current_user)
-      redirect_to :action => "show"
+      redirect_to profiles_path
     end
   end
   def create
@@ -16,19 +26,8 @@ class ProfilesController < ApplicationController
   end
   def edit
   end
-  def show
-    if params.has_key?(:id)
-      if Profile.exists?(user_id: params[:id])
-        @profile = Profile.find_by(user_id: params[:id])
-      else
-        redirect_to root_path
-      end
-    else
-      Profile.exists?(user_id: current_user.id)
-    end
-  end
   private
   def profile_params
-    params.require(:profile).permit(:fullName, :DoB, :address, :city, :country)
+    params.require(:profile).permit(:fullName, :DoB, :address, :city, :country, :profileImg)
   end
 end

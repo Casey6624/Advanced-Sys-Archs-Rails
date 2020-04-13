@@ -1,6 +1,17 @@
 <div class="main-page-body">
 
 <div class="products-container">
+<div class="center-no-marg">
+    <p> <span class="badge badge-secondary"><%= @products.length %></span> Products Found </p>
+        <%= form_tag search_page_path, :method => "get" do %>
+        <div class="input-group">
+        <%= search_field_tag :term, params[:term], placeholder: "Search by product name.", class:"form-control" %>
+        <div class="input-group-btn">
+            <%= submit_tag "Search", class:"btn btn-primary" %>
+        </div>
+        <% end %>
+    </div>
+</div>
 <% @products.each do |product| %>
 
 <div class="card product-container">

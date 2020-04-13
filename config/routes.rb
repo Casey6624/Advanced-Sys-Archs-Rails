@@ -11,13 +11,7 @@ Rails.application.routes.draw do
 
   resources :sessions
   resources :users
-
-  resources :products #do
-    #collection do
-    #  get :search
-    #end
-  #end
-  
+  resources :products 
   resources :profiles
   resources :reviews
   
