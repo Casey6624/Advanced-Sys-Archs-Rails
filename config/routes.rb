@@ -1,23 +1,22 @@
 Rails.application.routes.draw do
+  get "/search" => "products#search", :as => "search_page"
   get 'sessions/create'
   get 'sessions/destroy'
-  #match "products/:product_id", "products#product_reviews", via :get
   root "static_pages#home"
-  #match "/products" to "static_pages/products"
   get 'products/create'
   get 'static_pages/home' 
-  get 'static_pages/aboutus'
-  get 'static_pages/contactus'
-  get 'static_pages/products'
+  # rewrite to remove /static_pages/ controller in the URL
+  get "aboutus" => 'static_pages#aboutus'
+  get "contactus" => 'static_pages#contactus'
 
   resources :sessions
   resources :users
 
-  resources :products do
-    collection do
-      get :search
-    end
-  end
+  resources :products #do
+    #collection do
+    #  get :search
+    #end
+  #end
   
   resources :profiles
   resources :reviews

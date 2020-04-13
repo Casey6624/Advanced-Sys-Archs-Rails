@@ -1,12 +1,6 @@
 <div class="main-page-body">
 
 <div class="products-container">
-
-<%= form_tag search_products_path, method: :get do %>
-    <%= text_field_tag :term, nil, placeholder: "Search by product name.", class:"form-control" %>
-    <%= submit_tag "Search", class:"btn btn-primary" %>
-<% end %>
-
 <% @products.each do |product| %>
 
 <div class="card product-container">
