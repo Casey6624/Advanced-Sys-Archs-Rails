@@ -80,6 +80,14 @@ html, p, h3{
      font-size: 1rem;
  }
 
+ #bottom-nav{
+     overflow: hidden;
+     position: fixed;
+     bottom: 0;
+     width: 100%;
+     padding-top: 0.5rem;
+ }
+
  #bottom-nav-links li > a{
      font-size: 1rem;
  }

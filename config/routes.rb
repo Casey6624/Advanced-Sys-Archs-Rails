@@ -12,7 +12,13 @@ Rails.application.routes.draw do
 
   resources :sessions
   resources :users
-  resources :products
+
+  resources :products do
+    collection do
+      get :search
+    end
+  end
+  
   resources :profiles
   resources :reviews
   

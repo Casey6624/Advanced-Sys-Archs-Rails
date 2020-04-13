@@ -1,0 +1,37 @@
+<div class="main-page-body">
+
+<div class="products-container">
+
+<%= form_tag search_products_path, method: :get do %>
+    <%= text_field_tag :term, nil, placeholder: "Search by product name.", class:"form-control" %>
+    <%= submit_tag "Search", class:"btn btn-primary" %>
+<% end %>
+
+<% @products.each do |product| %>
+
+<div class="card product-container">
+    <div class="side-by-side-flex">
+        <div class="space-around-flex">
+        <strong> <h2 class="prod-name"> <%= product.productName %> </h2> </strong>
+        <span class="fancy-divider"> by </span>
+        <h3> <%= product.brandName %> </h3>
+        </div>
+        <h3 id="prod-cat"> <%= product.category %> </h3>
+    </div>
+    <p> <%= product.description %> </p>
+    <div class="side-by-side-flex">
+        <div class="price-date-container">
+        <h4> Average Price: £ <%= product.averageCost %> </h4>
+        <p> Product Release Date: <%= product.dateReleased %> </p>
+    </div>
+        <%= image_tag(product.productImg, class:"product-image") %>
+    </div>
+<div class="product-controls"> 
+    <%= link_to "View Product", product_path(product), {:class => "prod-control"} %>
+    <%= link_to "View Reviews", reviews_path(:product_id => product.id, :product_name => product.productName), {:class => "prod-control"} %>
+        <%= link_to "Write a Review", new_review_url(:product_id => product.id, :product_name => product.productName), {:class => "prod-control"} %>
+</div>
+</div>
+<% end %>
+</div>
+</div>
