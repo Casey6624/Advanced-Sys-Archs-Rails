@@ -2,7 +2,7 @@
 
 <h2> Edit your Profile </h2>
 
-    <%= form_with mode: @profile, local: true do |f| %>
+    <%= form_with model: @profile, local: true do |f| %>
         <div class="form-group">
             <%= f.text_field :fullName, placeholder: 'Your Full Name', class: 'form-control' %>
         </div>

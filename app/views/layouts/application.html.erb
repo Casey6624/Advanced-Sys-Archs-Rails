@@ -18,12 +18,14 @@
       Account
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <% if current_user == false %>
       <%= link_to "Create Account", "/users/new", class:"dropdown-item" %>
+      <%= link_to "Log In", "/sessions/new", class:"dropdown-item" %>
+      <% end %>
+      <% if current_user %>
         <%= link_to "Log Out", "/sessions/destroy", class:"dropdown-item" %>
-        <%= link_to "Log In", "/sessions/new", class:"dropdown-item" %>
       <%= link_to "View My Reviews", "/users/new", class:"dropdown-item" %>
       <%= link_to "View My Profile", "/profiles/show", class:"dropdown-item" %>
-      <% if current_user %>
       <%= link_to "Edit My Profile", edit_profile_path(:id => session[:userid]), class:"dropdown-item" %>
       <% end %>
     </div>
@@ -84,8 +86,8 @@
       </li>
         <li class="nav-item nav-link">
         <% if current_user %>
-        <%= link_to "Log Out", "/sessions/destroy" %>
-      <% end %>
+          <%= link_to "Log Out", "/sessions/destroy" %>
+        <% end %>
         </li>
         <li class="nav-item nav-link">
         <%= link_to "Log In", "/sessions/new" %>

@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  #before_action :authorize, :only => [:create, :show, :edit, :new]
+  #before_action :authorize, :only => [:create, :edit, :new]
   def index
     @profiles = Profile.all
   end
@@ -15,24 +15,20 @@ class ProfilesController < ApplicationController
     end
   end
   def new
-    if current_user == nil
-      redirect_to sessions_path
-    end
-    if Profile.exists?(user_id: current_user.id)
-      redirect_to profiles_path
-    end
+    @profile = Profile.new
+    @profile.user.build
   end
   def create
-    @profile = Profile.new(profile_params.merge(user_id: current_user.id))
-    if @profile.save
-      redirect_to @profile
-    else
-      render "new"
-    end
-  end
+    userParams = params[:profile]
+    userParams = userParams[:user]
+    @user = User.sql("INSERT INTO `users` (`id`, `username`, `password_digest`, `userType`, `created_at`, `updated_at`) VALUES (NULL, '#{userParams[:username]}', '#{userParams[:password]}', '#{userParams[:userType]}', '', '')")
+    @user.save
+    @profile = Profile.new(profile_params.merge(user_id: @user.id))
+    @profile.save
+   end
   def edit
-    if Profile.exists?(params[:id])
-      @profile = Profile.find(params[:id])
+    if Profile.exists?(user_id: current_user.id)
+      @profile = Profile.where("user_id = #{current_user.id}")
     else
       render "new"
     end
@@ -43,11 +39,11 @@ class ProfilesController < ApplicationController
     if @profile.update(profile_params)
       redirect_to @article
     else
-      render "edit"
+      render "edit" 
     end
   end
   private
   def profile_params
-    params.require(:profile).permit(:fullName, :DoB, :address, :city, :country, :profileImg)
+    params.require(:profile).permit(:fullName, :DoB, :address, :city, :country, :profileImg, user_attributes: [:username, :password, :userType])
   end
 end

@@ -2,12 +2,42 @@
     <h2>Sign Up to Electroniks.</h2>
     <p> Start reviewing products yourself.</p>
 
-    <%= form_for User.new do |f| %>
+    <%= form_for @user do |f| %>
     <%= f.text_field :username, placeholder: 'Enter a Username', class: 'form-control' %>
     <br>
     <%= f.password_field :password, placeholder: 'Enter a Password', class: 'form-control' %>
     <%= f.hidden_field :userType, :value => "User" %>
     <br>
+
+    <%= f.fields_for :profile do |p| %>
+
+        <div class="form-group">
+            <%= p.text_field :fullName, placeholder: 'Your Full Name', class: 'form-control' %>
+        </div>
+        <br>
+        <div class="form-group">
+            <%= p.date_field :DoB, class: 'form-control' %>
+        </div>
+        <br>
+        <div class="form-group">
+            <%= p.text_field :address, placeholder: 'Full Address', class: 'form-control' %>
+        </div>
+        <br>
+        <div class="form-group">
+            <%= p.text_field :city, placeholder: 'City/Town', class: 'form-control' %>
+        </div>
+        <br>
+        <div class="form-group">
+            <%= p.text_field :country, placeholder: 'Country', class: 'form-control' %>
+        </div>
+        <div class="form-group">
+            <%= p.file_field :profileImg, accept: "image/png,image/jpeg"%>  
+        </div>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <br>
+
+    <% end %>
+
     <%= f.submit 'Create Account', class:"btn btn-primary" %>
     <%= link_to  "Cancel", products_path, class: "btn btn-danger" %>
     <% end %>
