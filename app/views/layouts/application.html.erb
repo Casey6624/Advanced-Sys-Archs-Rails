@@ -23,7 +23,9 @@
         <%= link_to "Log In", "/sessions/new", class:"dropdown-item" %>
       <%= link_to "View My Reviews", "/users/new", class:"dropdown-item" %>
       <%= link_to "View My Profile", "/profiles/show", class:"dropdown-item" %>
-      <%= link_to "Edit My Profile", "/profiles/edit", class:"dropdown-item" %>
+      <% if current_user %>
+      <%= link_to "Edit My Profile", edit_profile_path(:id => session[:userid]), class:"dropdown-item" %>
+      <% end %>
     </div>
   </li>
   <li class="nav-item nav-link">
@@ -81,7 +83,9 @@
       <%= link_to "Create Account", "/users/new" %>
       </li>
         <li class="nav-item nav-link">
+        <% if current_user %>
         <%= link_to "Log Out", "/sessions/destroy" %>
+      <% end %>
         </li>
         <li class="nav-item nav-link">
         <%= link_to "Log In", "/sessions/new" %>
@@ -93,9 +97,14 @@
       </li>
       <li class="nav-item nav-link">
       <%= link_to "View My Profile", "/profiles/show" %>
+      <% if current_user %>
+        <%= link_to "View Profile", "#{profiles_path}/#{session[:userid]}" %>
+      <% end %>
       </li>
       <li class="nav-item nav-link">
-      <%= link_to "Edit My Profile", "/profiles/edit" %>
+      <% if current_user %>
+        <%= link_to "Edit My Profile", edit_profile_path(:id => session[:userid]) %>
+      <% end %>
       </li>
       </div>
     

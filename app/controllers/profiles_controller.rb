@@ -8,23 +8,43 @@ class ProfilesController < ApplicationController
       if Profile.exists?(user_id: params[:id])
         @profile = Profile.find_by(user_id: params[:id])
       end
+    else
+      if Profile.exists?(user_id: current_user.id)
+        @profile = Profile.find_by(user_id: current_user.id)
+      end
     end
   end
   def new
     if current_user == nil
       redirect_to sessions_path
     end
-    if Profile.exists?(user_id: current_user)
+    if Profile.exists?(user_id: current_user.id)
       redirect_to profiles_path
     end
   end
   def create
-    # add if / else statements
     @profile = Profile.new(profile_params.merge(user_id: current_user.id))
-    @profile.save
-    redirect_to @profile
+    if @profile.save
+      redirect_to @profile
+    else
+      render "new"
+    end
   end
   def edit
+    if Profile.exists?(params[:id])
+      @profile = Profile.find(params[:id])
+    else
+      render "new"
+    end
+  end
+  def update
+    @profile = Profile.find(params[:id])
+
+    if @profile.update(profile_params)
+      redirect_to @article
+    else
+      render "edit"
+    end
   end
   private
   def profile_params
