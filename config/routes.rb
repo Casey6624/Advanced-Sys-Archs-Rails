@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   get "/search" => "products#search", :as => "search_page"
   get 'sessions/create'
+  get 'products/create'
+  get "profiles/create"
   get 'sessions/destroy'
   root "static_pages#home"
-  get 'products/create'
   get 'static_pages/home' 
   # rewrite to remove /static_pages/ controller in the URL
   get "aboutus" => 'static_pages#aboutus'

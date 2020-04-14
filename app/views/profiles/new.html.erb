@@ -1,6 +1,13 @@
 <div class="main-page-body">
     <h2> Create a Profile </h2>
     <%= form_for :profile, url: profiles_path do |f| %>
+        <%= f.fields_for :user do |p| %>
+            <%= p.text_field :username, placeholder: 'Enter a Username', class: 'form-control' %>
+            <br>
+            <%= p.password_field :password, placeholder: 'Enter a Password', class: 'form-control' %>
+            <%= p.hidden_field :userType, :value => "User" %>
+        <% end %>
+        <br>
         <div class="form-group">
             <%= f.text_field :fullName, placeholder: 'Your Full Name', class: 'form-control' %>
         </div>
@@ -23,13 +30,6 @@
         <div class="form-group">
             <%= f.file_field :profileImg, accept: "image/png,image/jpeg"%>  
         </div>
-        <%= f.fields_for :user do |p| %>
-            <%= p.text_field :username, placeholder: 'Enter a Username', class: 'form-control' %>
-            <br>
-            <%= p.password_field :password, placeholder: 'Enter a Password', class: 'form-control' %>
-            <%= p.hidden_field :userType, :value => "User" %>
-        <% end %>
-
         <br>
         <%= f.submit 'Create Profile', class:"btn btn-primary" %>
         <%= link_to  "Cancel", products_path, class: "btn btn-danger" %>

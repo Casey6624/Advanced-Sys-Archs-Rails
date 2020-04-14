@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   #before_action :authorize, :only => [:create, :edit, :new]
+  before_action :find_profile, only: [:edit, :update]
   def index
     @profiles = Profile.all
   end
@@ -15,17 +16,11 @@ class ProfilesController < ApplicationController
     end
   end
   def new
-    @profile = Profile.new
-    @profile.user.build
   end
   def create
-    userParams = params[:profile]
-    userParams = userParams[:user]
-    @user = User.sql("INSERT INTO `users` (`id`, `username`, `password_digest`, `userType`, `created_at`, `updated_at`) VALUES (NULL, '#{userParams[:username]}', '#{userParams[:password]}', '#{userParams[:userType]}', '', '')")
-    @user.save
-    @profile = Profile.new(profile_params.merge(user_id: @user.id))
+    @profile = Profile.new(profile_params)
     @profile.save
-   end
+  end
   def edit
     if Profile.exists?(user_id: current_user.id)
       @profile = Profile.where("user_id = #{current_user.id}")
@@ -41,6 +36,10 @@ class ProfilesController < ApplicationController
     else
       render "edit" 
     end
+  end
+  private
+  def find_profile
+    @profile = Profile.find_by(params[:id])
   end
   private
   def profile_params
