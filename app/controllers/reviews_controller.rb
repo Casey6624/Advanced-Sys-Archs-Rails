@@ -23,11 +23,8 @@ class ReviewsController < ApplicationController
       nestedParams = params[:review]
       productId = nestedParams[:product_id]
       if Review.exists?(profile_id: profile.id, product_id: productId)
-        if @review = Review.update(review_params)
-          redirect_to reviews_path
-        else
-          redirect_to products_path
-        end
+        #@review = Review.all.where("profile_id = #{profile.id} AND product_id = #{productId}")
+        render "edit"
       else
         @review = Review.new(review_params.merge(profile_id: profile.id, product_id: productId))
         @review.authorName = profile.fullName
@@ -36,6 +33,18 @@ class ReviewsController < ApplicationController
       end
     else
       redirect_to products_url
+    end
+  end
+  def edit
+      @review = Review.all.where("profile_id = #{params[:profile_id]} AND product_id = #{params[:product_id]}")
+  end
+  def update
+    @review = Review.find(params[:id])
+
+    if @review.update(review_params)
+      redirect_to @review
+    else
+      render products_path
     end
   end
 
