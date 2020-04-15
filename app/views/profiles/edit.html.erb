@@ -22,11 +22,15 @@
         <div class="form-group">
             <%= f.text_field :country, placeholder: 'Country', class: 'form-control' %>
         </div>
+        <h3> Profile Picture </h3>
+        <div class="side-by-side-flex">
         <div class="form-group">
             <%= f.file_field :profileImg, accept: "image/png,image/jpeg"%>  
         </div>
-        <%= f.hidden_field :user_id, :value => current_user.id %>
+        <%= image_tag(@profile.profileImg, class:"product-image") %>
+        </div>
         <br>
+        <%= f.hidden_field :user_id, :value => current_user.id %>
         <%= f.submit 'Update Profile', class:"btn btn-primary" %>
         <%= link_to  "Cancel", products_path, class: "btn btn-danger" %>
     <% end %>

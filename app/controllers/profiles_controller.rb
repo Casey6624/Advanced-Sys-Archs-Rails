@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
-  #before_action :authorize, :only => [:create, :edit, :new]
-  before_action :find_profile, only: [:edit, :update]
+  #before_action :authorize, :only => [:create, :show, :edit, :new]
   def index
     @profiles = Profile.all
   end
@@ -16,14 +15,24 @@ class ProfilesController < ApplicationController
     end
   end
   def new
+    if current_user == nil
+      redirect_to sessions_path
+    end
+    if Profile.exists?(user_id: current_user.id)
+      redirect_to profiles_path
+    end
   end
   def create
-    @profile = Profile.new(profile_params)
-    @profile.save
+    @profile = Profile.new(profile_params.merge(user_id: current_user.id))
+    if @profile.save
+      redirect_to @profile
+    else
+      render "new"
+    end
   end
   def edit
-    if Profile.exists?(user_id: current_user.id)
-      @profile = Profile.where("user_id = #{current_user.id}")
+    if Profile.exists?(params[:id])
+      @profile = Profile.find(params[:id])
     else
       render "new"
     end
@@ -32,17 +41,13 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(params[:id])
 
     if @profile.update(profile_params)
-      redirect_to @article
+      redirect_to @profile
     else
-      render "edit" 
+      render "edit"
     end
   end
   private
-  def find_profile
-    @profile = Profile.find_by(params[:id])
-  end
-  private
   def profile_params
-    params.require(:profile).permit(:fullName, :DoB, :address, :city, :country, :profileImg, user_attributes: [:username, :password, :userType])
+    params.require(:profile).permit(:fullName, :DoB, :address, :city, :country, :profileImg)
   end
 end
