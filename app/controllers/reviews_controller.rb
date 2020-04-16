@@ -43,6 +43,8 @@ class ReviewsController < ApplicationController
 
   def show
     @review = Review.find(params[:id])
+    @profile = Profile.find_by_id(@review.profile_id)
+    @product = Product.find_by_id(@review.product_id)
   end
   private
   def review_params

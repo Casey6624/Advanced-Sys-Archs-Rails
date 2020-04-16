@@ -1,9 +1,24 @@
 <div class="main-page-body">
 <div class="product-full-container">
 <%= link_to "Back to Products", products_path, {:class => "btn btn-danger"} %>
+
+<div class="row">
+<div class="col-sm-6">
+    <div class="flex-start">
+        <h2 class="prod-name"> <%= @profile.fullName %> </h2>
+        <span class="fancy-divider">from</span>
+        <h3> <%= @profile.city %>, <%= @profile.country %></h3>
+    </div>
+    <p> Date of Birth: <%= @profile.DoB %> </p>
+    <p> Member Since: <span class="badge badge-info"> <%= @profile.created_at.strftime("%F") %>  </span> </p>
+    <%= image_tag(@profile.profileImg, class:"product-image") %>
+</div>
+
+<div class="col-sm-6">
+    
     <p> Review Posted: <span class="badge badge-info"> <%= @review.created_at.strftime("%F") %>  </span> </p>
     <div class="flex-space-between">
-        <h2 class="prod-name"> <%= @review.authorName %> </h2>
+        <h2 class="prod-name"> <%= @product.productName %> </h2>
             <div class="side-by-side-flex">
             <%  (5 - @review.productRating).times do |i|  %>
             <%= image_tag "loststar.png", id:"star-icon" %>
@@ -12,8 +27,9 @@
             <%= image_tag "favourite.png", id:"star-icon" %>
         <% end %>
     </div>
+</div>
+<p> <%= @review.reviewText %> </p>
+</div>
     </div>
-
-    <p> <%= @review.reviewText %> </p>
 </div>
 </div>
