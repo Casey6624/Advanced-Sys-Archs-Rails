@@ -6,6 +6,7 @@ class ProductsController < ApplicationController
   end
   def show
     @product = Product.find(params[:id])
+    @reviews = Review.find_by_sql("SELECT * FROM `reviews` JOIN profiles ON profiles.id = reviews.profile_id WHERE `product_id` = #{params[:id]}")
   end
   def create
     @product = Product.new(product_params)
