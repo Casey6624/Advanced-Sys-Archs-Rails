@@ -183,6 +183,14 @@ html, p, h3{
      margin-top: 2rem;
  }
 
+ /* ABOUT US */
+
+ #row-1-aboutus{
+     background-image: url("sheff.jpg");
+     background-repeat: no-repeat;
+     background-size: cover;
+ }
+
 /* PRODUCTS CSS */
  #prod-cat{
      color: #733c87;
