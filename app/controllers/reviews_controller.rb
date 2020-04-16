@@ -8,12 +8,12 @@ class ReviewsController < ApplicationController
     end
   end
   def new
-    if current_user.nil?
-      # change to login 
-      redirect_to sessions_path
-    end
     if !Profile.exists?(user_id: current_user.id)
       redirect_to( new_profile_path, notice: "Please create a profile first")
+    end    
+    profile = Profile.find_by_user_id(current_user.id)
+    if Review.exists?(profile_id: profile.id, product_id: params[:product_id])
+      redirect_to( products_path, notice: "Product has already been reviewed!")
     end
   end
   def create
@@ -22,9 +22,10 @@ class ReviewsController < ApplicationController
       # Pick out the product_id which is a hidden_field in the review form
       nestedParams = params[:review]
       productId = nestedParams[:product_id]
+      logger.info "productId: #{productId}"
       if Review.exists?(profile_id: profile.id, product_id: productId)
-        @review = Review.select("*").where("profile_id = #{profile.id} AND product_id = #{productId}").first
-        render "edit"
+        #@review = Review.select("*").where("profile_id = #{profile.id} AND product_id = #{productId}").first
+        redirect_to(products_path, notice: "Item has already been reviewed!")
       else
         @review = Review.new(review_params.merge(profile_id: profile.id, product_id: productId))
         @review.authorName = profile.fullName
@@ -36,16 +37,8 @@ class ReviewsController < ApplicationController
     end
   end
   def edit
-    @review = Review.all.where("profile_id = #{profile.id} AND product_id = #{productId}").first
   end
   def update
-    @review = Review.find(params[:id])
-
-    if @review.update(review_params)
-      redirect_to @review
-    else
-      render products_path
-    end
   end
 
   def show
