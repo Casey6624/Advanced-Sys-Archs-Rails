@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
       redirect_to sessions_path
     end
     if !Profile.exists?(user_id: current_user.id)
-      redirect_to profiles_path
+      redirect_to( new_profile_path, notice: "Please create a profile first")
     end
   end
   def create
@@ -23,7 +23,7 @@ class ReviewsController < ApplicationController
       nestedParams = params[:review]
       productId = nestedParams[:product_id]
       if Review.exists?(profile_id: profile.id, product_id: productId)
-        #@review = Review.all.where("profile_id = #{profile.id} AND product_id = #{productId}")
+        @review = Review.select("*").where("profile_id = #{profile.id} AND product_id = #{productId}").first
         render "edit"
       else
         @review = Review.new(review_params.merge(profile_id: profile.id, product_id: productId))
@@ -35,11 +35,8 @@ class ReviewsController < ApplicationController
       redirect_to products_url
     end
   end
-  def find_user_reveiws
-    if Review.exists?()
-  end
   def edit
-      @review = Review.all.where("profile_id = #{params[:profile_id]} AND product_id = #{params[:product_id]}")
+    @review = Review.all.where("profile_id = #{profile.id} AND product_id = #{productId}").first
   end
   def update
     @review = Review.find(params[:id])

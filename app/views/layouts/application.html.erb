@@ -18,7 +18,7 @@
       Account
     </a>
     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-    <% if current_user == false %>
+    <% if !current_user %>
       <%= link_to "Create Account", "/users/new", class:"dropdown-item" %>
       <%= link_to "Log In", "/sessions/new", class:"dropdown-item" %>
       <% end %>
@@ -85,23 +85,24 @@
       </li>
       <div class="side-by-side-flex">
               <li class="nav-item nav-link">
+      <% if !current_user  %>
       <%= link_to "Create Account", "/users/new" %>
+      <% end %>
+        <li class="nav-item nav-link">
+        <% if !current_user  %>
+        <%= link_to "Log In", "/sessions/new" %>
+        <% end %>
+        </li>
       </li>
         <li class="nav-item nav-link">
         <% if current_user %>
           <%= link_to "Log Out", "/sessions/destroy" %>
         <% end %>
         </li>
-        <li class="nav-item nav-link">
-        <%= link_to "Log In", "/sessions/new" %>
-        </li>
+
       </div>
       <div class="side-by-side-flex">
       <li class="nav-item nav-link">
-      <%= link_to "View My Reviews", "/users/new" %>
-      </li>
-      <li class="nav-item nav-link">
-      <%= link_to "View My Profile", "/profiles/show" %>
       <% if current_user %>
         <%= link_to "View Profile", "#{profiles_path}/#{session[:userid]}" %>
       <% end %>

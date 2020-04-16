@@ -1,4 +1,6 @@
+<div class="main-page-body">
 <div class="product-full-container">
+<%= link_to "Back to Products", products_path, {:class => "btn btn-danger"} %>
     <p> Review Posted: <span class="badge badge-info"> <%= @review.created_at.strftime("%F") %>  </span> </p>
     <div class="flex-space-between">
         <h2 class="prod-name"> <%= @review.authorName %> </h2>
@@ -13,4 +15,5 @@
     </div>
 
     <p> <%= @review.reviewText %> </p>
+</div>
 </div>
