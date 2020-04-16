@@ -161,6 +161,15 @@ html, p, h3{
      max-width: 1080px;
  }
 
+ .remove-a-tag{
+    color: #c0bcd5;
+    text-decoration: none;
+ }
+
+ .remove-a-tag:hover{
+    color: #733c87;
+ }
+
  /* INDEX CS */
 
  .homepage-banner-container img{

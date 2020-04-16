@@ -11,8 +11,12 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:password])
       session[:username] = user.username
       session[:userid] = user.id
-      redirect_to root_path, notice: "welcome #{user.username}, you are logged in."
-    else
+      if user.userType == "Admin"
+        redirect_to admin_index_path
+      else
+        redirect_to root_path, notice: "welcome #{user.username}, you are logged in."
+      end  
+      else
       render "new", alert:
       "invalid username/password combination."    
     end

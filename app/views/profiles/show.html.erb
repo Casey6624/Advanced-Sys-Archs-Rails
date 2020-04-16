@@ -19,6 +19,11 @@
 
 </div>
 
+<% if @isThisLoggedInUser %>
+    <%= link_to "Edit Your Profile", edit_profile_path(:id => session[:userid]), class:"btn btn-primary", style:"float:right;" %>
+    <p> Hey <%= @profile.fullName %>, here are you reviews: </p>
+<% end %>
+
 <% if @reviews %>
 
 <% @reviews.each do |r| %>
@@ -48,6 +53,11 @@
         <p class="fancy-text-highlight"> <%= r.category %> </p>
         <h3 id="prod-cat"> <%= r.productName %> </h3>
     </div>
+
+</div>
+    <div class="product-controls"> 
+    <span class="prod-control"> <i class="fas fa-edit"></i> <%= link_to "Edit Review", edit_review_path(:id=> r.review_id, :product_name => r.productName), class:"remove-a-tag" %> </span>
+    <span class="prod-control"> <i class="fas fa-trash-alt"></i> <%= link_to "Delete Review", reviews_destory_path(:id=> r.review_id), class:"remove-a-tag" %> </span>
 </div>
 </div>
 

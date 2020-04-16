@@ -7,7 +7,12 @@ class ProfilesController < ApplicationController
     if params.has_key?(:id)
       if Profile.exists?(user_id: params[:id])
         @profile = Profile.find_by(user_id: params[:id])
-        @reviews = Review.find_by_sql("SELECT * FROM `reviews` JOIN products ON products.id = reviews.product_id WHERE `profile_id` = #{@profile.id}")
+        @reviews = Review.find_by_sql("SELECT reviews.id AS \"review_id\", reviewText, authorName, productRating, product_id, products.productName, products.category, reviews.created_at FROM `reviews` JOIN products ON products.id = reviews.product_id WHERE `profile_id` = #{@profile.id}")
+        if @profile.user_id == current_user.id
+          @isThisLoggedInUser = true
+        else
+          @isThisLoggedInUser = false
+        end
       end
     else
       if Profile.exists?(user_id: current_user.id)
@@ -46,6 +51,8 @@ class ProfilesController < ApplicationController
     else
       render "edit"
     end
+  end
+  def destroy
   end
   private
   def profile_params

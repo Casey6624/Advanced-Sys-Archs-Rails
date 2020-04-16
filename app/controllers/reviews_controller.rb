@@ -24,7 +24,6 @@ class ReviewsController < ApplicationController
       productId = nestedParams[:product_id]
       logger.info "productId: #{productId}"
       if Review.exists?(profile_id: profile.id, product_id: productId)
-        #@review = Review.select("*").where("profile_id = #{profile.id} AND product_id = #{productId}").first
         redirect_to(products_path, notice: "Item has already been reviewed!")
       else
         @review = Review.new(review_params.merge(profile_id: profile.id, product_id: productId))
@@ -37,10 +36,20 @@ class ReviewsController < ApplicationController
     end
   end
   def edit
+      @review = Review.find_by_id(params[:id])
+      @profile = Profile.find_by_id(@review.profile_id)
+      if @profile.user_id !=  current_user.id
+        redirect_to products_path, notice: "That review does not belong to you."
+      end
   end
   def update
+    @review = Review.find_by_id(params[:id])
+    if @review.update(review_params)
+      redirect_to @review
+    else
+      render "edit"
+    end
   end
-
   def show
     @review = Review.find(params[:id])
     @profile = Profile.find_by_id(@review.profile_id)
