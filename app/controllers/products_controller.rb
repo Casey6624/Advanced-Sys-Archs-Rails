@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
     if params[:term].blank?
       redirect_to(products_path, notice: "No search text inputted.") and return
     else
+      # change to lowercase to improve functionality, use wildcards to make search more forgiving.
       @parameter = params[:term].downcase
       @products = Product.all.where("lower(productName) LIKE :term", term: "%#{@parameter}%")
       if(@products.nil?)

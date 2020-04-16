@@ -35,6 +35,9 @@ class ReviewsController < ApplicationController
       redirect_to products_url
     end
   end
+  def find_user_reveiws
+    if Review.exists?()
+  end
   def edit
       @review = Review.all.where("profile_id = #{params[:profile_id]} AND product_id = #{params[:product_id]}")
   end

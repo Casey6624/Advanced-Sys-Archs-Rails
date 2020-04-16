@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  #before_action :authorize, :only => [:create, :show, :edit, :new]
+  #before_action :authorize, :only => [:create, :edit, :new]
   def index
     @profiles = Profile.all
   end
@@ -7,6 +7,7 @@ class ProfilesController < ApplicationController
     if params.has_key?(:id)
       if Profile.exists?(user_id: params[:id])
         @profile = Profile.find_by(user_id: params[:id])
+        @reviews = Review.find_by_sql("SELECT * FROM `reviews` JOIN products ON products.id = reviews.product_id WHERE `profile_id` = #{@profile.id}")
       end
     else
       if Profile.exists?(user_id: current_user.id)
