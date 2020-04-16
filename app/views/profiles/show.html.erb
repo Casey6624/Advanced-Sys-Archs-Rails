@@ -57,7 +57,7 @@
 </div>
     <div class="product-controls"> 
     <span class="prod-control"> <i class="fas fa-edit"></i> <%= link_to "Edit Review", edit_review_path(:id=> r.review_id, :product_name => r.productName), class:"remove-a-tag" %> </span>
-    <span class="prod-control"> <i class="fas fa-trash-alt"></i> <%= link_to "Delete Review", reviews_destory_path(:id=> r.review_id), class:"remove-a-tag" %> </span>
+    <span class="prod-control"> <i class="fas fa-trash-alt"></i> <%= link_to "Delete Review", reviews_destroy_path(:id=> r.review_id), class:"remove-a-tag" %> </span>
 </div>
 </div>
 

@@ -18,13 +18,12 @@ class ReviewsController < ApplicationController
   end
   def create
     if Profile.exists?(user_id: current_user.id)
-      profile = Profile.find_by_user_id(current_user.id)
+      @profile = Profile.where("user_id = #{current_user.id}")
       # Pick out the product_id which is a hidden_field in the review form
       nestedParams = params[:review]
       productId = nestedParams[:product_id]
-      logger.info "productId: #{productId}"
-      if Review.exists?(profile_id: profile.id, product_id: productId)
-        redirect_to(products_path, notice: "Item has already been reviewed!")
+      if Review.exists?(profile_id: @profile.id, product_id: productId)
+        redirect_to(products_path, notice: "You have already reviewed this item! Head to your profile to edit/delete the review.")
       else
         @review = Review.new(review_params.merge(profile_id: profile.id, product_id: productId))
         @review.authorName = profile.fullName
@@ -54,6 +53,12 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @profile = Profile.find_by_id(@review.profile_id)
     @product = Product.find_by_id(@review.product_id)
+  end
+  def destroy
+    @review = Review.find(params[:id])
+    if @review.destroy
+      redirect_to products_path, notice: "Review deleted! Returning to products page..."
+    end    
   end
   private
   def review_params

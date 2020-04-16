@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'products/create'
   get "profiles/create"
   get 'sessions/destroy'
-  get "reviews/destory"
+  get "reviews/destroy"
   root "static_pages#home"
   get 'static_pages/home' 
   # rewrite to remove /static_pages/ controller in the URL
