@@ -22,11 +22,11 @@ class ReviewsController < ApplicationController
       # Pick out the product_id which is a hidden_field in the review form
       nestedParams = params[:review]
       productId = nestedParams[:product_id]
-      if Review.exists?(profile_id: @profile.id, product_id: productId)
+      if Review.exists?(profile_id: @profile.ids.first, product_id: productId)
         redirect_to(products_path, notice: "You have already reviewed this item! Head to your profile to edit/delete the review.")
       else
-        @review = Review.new(review_params.merge(profile_id: profile.id, product_id: productId))
-        @review.authorName = profile.fullName
+        @review = Review.new(review_params.merge(profile_id: @profile.ids.first, product_id: productId))
+        @review.authorName = @profile.first.fullName
         @review.save
         redirect_to @review
       end
