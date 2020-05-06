@@ -13,11 +13,11 @@ class ProfilesController < ApplicationController
         else
           @isThisLoggedInUser = false
         end
+      else
+        render "new"
       end
     else
-      if Profile.exists?(user_id: current_user.id)
-        @profile = Profile.find_by(user_id: current_user.id)
-      end
+      render "new"
     end
   end
   def new
