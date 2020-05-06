@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
-  #before_action :authorize, :only => [:create, :edit, :new]
+  before_action :authorize, :only => [:create, :edit, :new]
+  before_action :authorize_profile, :only => [:edit]
   def index
     @profiles = Profile.all
   end
@@ -31,23 +32,22 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params.merge(user_id: current_user.id))
     if @profile.save
-      redirect_to @profile
+      redirect_to "/profiles/#{current_user.id}"
     else
-      render "new"
+      render products_path
     end
   end
   def edit
-    if Profile.exists?(params[:id])
-      @profile = Profile.find(params[:id])
-    else
-      render "new"
+    @profile = Profile.find_by_user_id(current_user.id)
+    if !@profile
+      redirect_to new_profile_path 
     end
   end
   def update
     @profile = Profile.find(params[:id])
 
     if @profile.update(profile_params)
-      redirect_to @profile
+      redirect_to "/profiles/#{current_user.id}"
     else
       render "edit"
     end

@@ -5,12 +5,10 @@ class ApplicationController < ActionController::Base
     def current_user
         @current_user ||=User.find(session[:userid]) if session[:userid]
     end
-    private
-    def find_profile
-        @find_profile ||=Profile.find(user_id: session[:userid]) if session[:userid]
+    def authorize_profile
+        redirect_to new_profile_path, alert: "Please create a profile to view this page" if Profile.find_by_user_id(session[:userid]).blank?
     end
     helper_method :current_user
-    helper_method :find_profile
     def authorize
         redirect_to new_session_path, alert: "Please login to view this page" if current_user.nil?
     end

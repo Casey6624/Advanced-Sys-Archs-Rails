@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authorize, :only => [:create, :new]
+  before_action :authorize_profile, :only => [:create, :new]
   def index
     if params.has_key?(:product_id)
       @reviews=Review.select("*").where("product_id = #{params[:product_id]}")
