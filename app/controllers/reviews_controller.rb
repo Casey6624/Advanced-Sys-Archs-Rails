@@ -4,6 +4,7 @@ class ReviewsController < ApplicationController
   def index
     if params.has_key?(:product_id)
       @reviews=Review.select("*").where("product_id = #{params[:product_id]}")
+      @product = Product.find_by_id(params[:product_id])
     else
       redirect_to products_path
     end

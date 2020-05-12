@@ -27,11 +27,17 @@
         </div>
         </div>
     </div>
-    <p> <%= r.reviewText %> </p>
+    <div class="space-around-flex">
+        <p> <%= r.reviewText %> </p>
+        <%= image_tag @product.productImg %>
+    </div>
     <div class="side-by-side-flex">
         <div class="price-date-container">
-        <p> Review Submitted: <%= r.created_at.strftime("%F") %> </p>
+        <p> Review Submitted: <span class="badge badge-info"> <%= r.created_at.strftime("%F") %> </span> </p>
 </div>
+</div>
+    <div class="product-controls"> 
+    <%= link_to "View Review", "reviews/#{r.id}", {:class => "prod-control"} %>
 </div>
 </div>
 <% end %>

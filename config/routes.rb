@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'messages/create'
   get 'admin/index'
   get "/search" => "products#search", :as => "search_page"
   #get "/user-reveiws" => "reviews#find_user_reveiws", :as => "find_user_reveiws"

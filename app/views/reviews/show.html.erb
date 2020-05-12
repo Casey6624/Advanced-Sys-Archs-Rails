@@ -1,7 +1,7 @@
 <div class="main-page-body">
 <div class="product-full-container">
 <%= link_to "Back to Products", products_path, {:class => "btn btn-danger"} %>
-
+<%= link_to "View Profile", "/profiles/#{@profile.user_id}", {:class => "btn btn-primary"} %>
 <div class="row">
 <div class="col-sm-6">
     <div class="flex-start">
@@ -13,7 +13,6 @@
     <p> Member Since: <span class="badge badge-info"> <%= @profile.created_at.strftime("%F") %>  </span> </p>
     <%= image_tag(@profile.profileImg, class:"product-image") %>
 </div>
-
 <div class="col-sm-6">
     
     <p> Review Posted: <span class="badge badge-info"> <%= @review.created_at.strftime("%F") %>  </span> </p>
